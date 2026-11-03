@@ -1,0 +1,20 @@
+{
+ "features": [
+  "air_temp_k",
+  "process_temp_k",
+  "rpm",
+  "torque_nm",
+  "tool_wear_min",
+  "quality_code",
+  "temp_diff_k",
+  "power_w",
+  "strain_nm_min",
+  "strain_ratio",
+  "power_margin_w",
+  "wear_ratio"
+ ],
+ "threshold_cost": 0.24000000000000002,
+ "threshold_f1": 0.605,
+ "cost_fn": 50000,
+ "cost_fp": 5000
+}

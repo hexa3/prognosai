@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PrognosAI · Predictive Maintenance</title>
+  <meta name="description" content="Explainable, cost-aware predictive maintenance. Neural Storm 2026, FT-03. Runs fully in your browser." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/browser@1.12.0/build/stlite.css" />
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; background: #fff; }
+    #boot { max-width: 640px; margin: 18vh auto 0; padding: 0 16px; color: #1e293b; text-align: center; }
+    #boot h1 { font-size: 2rem; margin-bottom: .25rem; }
+    #boot p { color: #64748b; line-height: 1.5; }
+    .bar { height: 4px; background: #e2e8f0; border-radius: 2px; overflow: hidden; margin: 24px auto; max-width: 320px; }
+    .bar::after { content: ""; display: block; height: 100%; width: 40%; background: #2563eb; animation: s 1.2s infinite ease-in-out; }
+    @keyframes s { 0% { transform: translateX(-100%); } 100% { transform: translateX(250%); } }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div id="boot">
+      <h1>PrognosAI</h1>
+      <p>Loading the full Python ML stack in your browser (Streamlit + LightGBM on WebAssembly).<br/>
+         First load takes about 30–60 s, and nothing is sent to a server.</p>
+      <div class="bar"></div>
+      <p><a href="https://github.com/hexa3/prognosai">Source code &amp; README</a></p>
+    </div>
+  </div>
+  <script type="module">
+    import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@1.12.0/build/stlite.js";
+    mount({
+      requirements: ["lightgbm", "plotly"],
+      entrypoint: "streamlit_app.py",
+      streamlitConfig: { "theme.base": "light", "theme.primaryColor": "#2563eb", "client.toolbarMode": "viewer" },
+      files: {
+        "data/ai4i/ai4i2020.csv": {
+                "url": "./data/ai4i/ai4i2020.csv"
+        },
+        "data/cmapss/test_FD001.txt": {
+                "url": "./data/cmapss/test_FD001.txt"
+        },
+        "models/failure_metrics.json": {
+                "url": "./models/failure_metrics.json"
+        },
+        "models/failure_mode_HDF.txt": {
+                "url": "./models/failure_mode_HDF.txt"
+        },
+        "models/failure_mode_OSF.txt": {
+                "url": "./models/failure_mode_OSF.txt"
+        },
+        "models/failure_mode_PWF.txt": {
+                "url": "./models/failure_mode_PWF.txt"
+        },
+        "models/failure_mode_TWF.txt": {
+                "url": "./models/failure_mode_TWF.txt"
+        },
+        "models/failure_model.txt": {
+                "url": "./models/failure_model.txt"
+        },
+        "models/failure_model_meta.json": {
+                "url": "./models/failure_model_meta.json"
+        },
+        "models/failure_test_predictions.csv": {
+                "url": "./models/failure_test_predictions.csv"
+        },
+        "models/rul_FD001.txt": {
+                "url": "./models/rul_FD001.txt"
+        },
+        "models/rul_FD001_meta.json": {
+                "url": "./models/rul_FD001_meta.json"
+        },
+        "models/rul_FD001_test_predictions.csv": {
+                "url": "./models/rul_FD001_test_predictions.csv"
+        },
+        "models/rul_FD003.txt": {
+                "url": "./models/rul_FD003.txt"
+        },
+        "models/rul_FD003_meta.json": {
+                "url": "./models/rul_FD003_meta.json"
+        },
+        "models/rul_FD003_test_predictions.csv": {
+                "url": "./models/rul_FD003_test_predictions.csv"
+        },
+        "models/rul_metrics.json": {
+                "url": "./models/rul_metrics.json"
+        },
+        "prognosai/__init__.py": {
+                "url": "./prognosai/__init__.py"
+        },
+        "prognosai/advisor.py": {
+                "url": "./prognosai/advisor.py"
+        },
+        "prognosai/ai4i.py": {
+                "url": "./prognosai/ai4i.py"
+        },
+        "prognosai/cmapss.py": {
+                "url": "./prognosai/cmapss.py"
+        },
+        "prognosai/maintenance.py": {
+                "url": "./prognosai/maintenance.py"
+        },
+        "reports/figures/failure_curves.png": {
+                "url": "./reports/figures/failure_curves.png"
+        },
+        "reports/figures/failure_shap_summary.png": {
+                "url": "./reports/figures/failure_shap_summary.png"
+        },
+        "reports/figures/rul_FD001.png": {
+                "url": "./reports/figures/rul_FD001.png"
+        },
+        "reports/figures/rul_FD003.png": {
+                "url": "./reports/figures/rul_FD003.png"
+        },
+        "streamlit_app.py": {
+                "url": "./streamlit_app.py"
+        }
+},
+    }, document.getElementById("root"));
+  </script>
+</body>
+</html>

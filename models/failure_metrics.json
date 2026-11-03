@@ -1,0 +1,145 @@
+{
+  "dataset": "AI4I 2020 Predictive Maintenance (UCI #601), 10,000 rows",
+  "split": {
+    "train": 8000,
+    "test": 2000,
+    "test_failures": 68
+  },
+  "ablation": [
+    {
+      "threshold": 0.88,
+      "roc_auc": 0.9082480818414322,
+      "pr_auc": 0.39159475070628297,
+      "f1": 0.4,
+      "precision": 0.40298507462686567,
+      "recall": 0.39705882352941174,
+      "accuracy": 0.9595,
+      "brier": 0.12262054210862948,
+      "tp": 27,
+      "fp": 40,
+      "fn": 41,
+      "tn": 1892,
+      "business_cost_inr": 2250000,
+      "cv_pr_auc": 0.4344548294092664,
+      "model": "Logistic regression (raw)"
+    },
+    {
+      "threshold": 0.23500000000000001,
+      "roc_auc": 0.9758403361344539,
+      "pr_auc": 0.8365396581579361,
+      "f1": 0.7819548872180451,
+      "precision": 0.8,
+      "recall": 0.7647058823529411,
+      "accuracy": 0.9855,
+      "brier": 0.011454809184411923,
+      "tp": 52,
+      "fp": 13,
+      "fn": 16,
+      "tn": 1919,
+      "business_cost_inr": 865000,
+      "cv_pr_auc": 0.7888021355333964,
+      "model": "LightGBM (raw features)"
+    },
+    {
+      "threshold": 0.605,
+      "roc_auc": 0.9801181342102059,
+      "pr_auc": 0.8982845794971779,
+      "f1": 0.8976377952755905,
+      "precision": 0.9661016949152542,
+      "recall": 0.8382352941176471,
+      "accuracy": 0.9935,
+      "brier": 0.006434460776937941,
+      "tp": 57,
+      "fp": 2,
+      "fn": 11,
+      "tn": 1930,
+      "business_cost_inr": 560000,
+      "cv_pr_auc": 0.9034912524817164,
+      "model": "LightGBM + physics features (PrognosAI)"
+    }
+  ],
+  "final": {
+    "f1_optimal": {
+      "threshold": 0.605,
+      "roc_auc": 0.9801181342102059,
+      "pr_auc": 0.8982845794971779,
+      "f1": 0.8976377952755905,
+      "precision": 0.9661016949152542,
+      "recall": 0.8382352941176471,
+      "accuracy": 0.9935,
+      "brier": 0.006434460776937941,
+      "tp": 57,
+      "fp": 2,
+      "fn": 11,
+      "tn": 1930,
+      "business_cost_inr": 560000
+    },
+    "cost_optimal": {
+      "threshold": 0.24000000000000002,
+      "roc_auc": 0.9801181342102059,
+      "pr_auc": 0.8982845794971779,
+      "f1": 0.8976377952755905,
+      "precision": 0.9661016949152542,
+      "recall": 0.8382352941176471,
+      "accuracy": 0.9935,
+      "brier": 0.006434460776937941,
+      "tp": 57,
+      "fp": 2,
+      "fn": 11,
+      "tn": 1930,
+      "business_cost_inr": 560000
+    },
+    "default_0.5": {
+      "threshold": 0.5,
+      "roc_auc": 0.9801181342102059,
+      "pr_auc": 0.8982845794971779,
+      "f1": 0.8976377952755905,
+      "precision": 0.9661016949152542,
+      "recall": 0.8382352941176471,
+      "accuracy": 0.9935,
+      "brier": 0.006434460776937941,
+      "tp": 57,
+      "fp": 2,
+      "fn": 11,
+      "tn": 1930,
+      "business_cost_inr": 560000
+    },
+    "never_alarm_cost_inr": 3400000
+  },
+  "failure_modes": {
+    "TWF": {
+      "positives_test": 10,
+      "roc_auc": 0.9157286432160804,
+      "pr_auc": 0.058184618929277857
+    },
+    "HDF": {
+      "positives_test": 29,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0
+    },
+    "PWF": {
+      "positives_test": 13,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0
+    },
+    "OSF": {
+      "positives_test": 16,
+      "roc_auc": 0.9998109879032259,
+      "pr_auc": 0.9770716619981326
+    }
+  },
+  "shap_importance": {
+    "rpm": 0.63001,
+    "tool_wear_min": 0.50091,
+    "power_margin_w": 0.41272,
+    "temp_diff_k": 0.39368,
+    "torque_nm": 0.27044,
+    "strain_ratio": 0.25954,
+    "process_temp_k": 0.23071,
+    "air_temp_k": 0.21897,
+    "strain_nm_min": 0.13788,
+    "power_w": 0.13397,
+    "quality_code": 0.07871,
+    "wear_ratio": 0.07351
+  }
+}

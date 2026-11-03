@@ -1,0 +1,240 @@
+{
+  "cost_model": {
+    "failure_cost": 1500000.0,
+    "planned_cost": 200000.0,
+    "waste_per_cycle": 2000.0
+  },
+  "rul_cap": 125,
+  "subsets": {
+    "FD001": {
+      "subset": "FD001",
+      "train_engines": 100,
+      "test_engines": 100,
+      "n_features": 155,
+      "ablation": [
+        {
+          "model": "Ridge regression (raw sensors)",
+          "cv_rmse": 19.539408910038215,
+          "test_rmse": 21.31519283936336,
+          "test_mae": 16.567935587608357,
+          "test_nasa_score": 1189.4816922460147
+        },
+        {
+          "model": "LightGBM (raw sensors)",
+          "cv_rmse": 16.57796352978889,
+          "test_rmse": 17.78967733870492,
+          "test_mae": 13.091376510294998,
+          "test_nasa_score": 617.3470495499581
+        },
+        {
+          "model": "LightGBM + temporal features (PrognosAI)",
+          "cv_rmse": 9.239276877820426,
+          "test_rmse": 11.252771738684274,
+          "test_mae": 8.10722104714908,
+          "test_nasa_score": 188.92557883651338
+        }
+      ],
+      "final": {
+        "test_rmse": 11.252771738684274,
+        "test_mae": 8.10722104714908,
+        "test_nasa_score": 188.92557883651338,
+        "interval_80_coverage": 0.65,
+        "within_15_cycles": 0.81,
+        "rmse_true_rul_le_50": 4.0466771282629725,
+        "interval_80_coverage_all_rows": 0.8172724496029322,
+        "test_rows": 13096
+      },
+      "literature_rmse": {
+        "CNN (Babu et al., 2016)": 18.45,
+        "LSTM (Zheng et al., 2017)": 16.14,
+        "DCNN (Li et al., 2018)": 12.61
+      },
+      "fixed_interval_age": 135.0,
+      "conformal_bins": {
+        "edges": [
+          0,
+          15,
+          30,
+          50,
+          75,
+          100,
+          126
+        ],
+        "lo": [
+          -2.58,
+          -4.79,
+          -7.66,
+          -10.54,
+          -18.11,
+          -10.19
+        ],
+        "hi": [
+          3.26,
+          4.47,
+          5.38,
+          9.72,
+          20.11,
+          10.59
+        ]
+      },
+      "rolling_backtest": [
+        {
+          "policy": "Reactive (run-to-failure)",
+          "total_cost": 150000000.0,
+          "failures": 100,
+          "wasted_cycles": 0.0
+        },
+        {
+          "policy": "Fixed-interval preventive",
+          "total_cost": 36876000.0,
+          "failures": 2,
+          "wasted_cycles": 7138.0
+        },
+        {
+          "policy": "PrognosAI (risk-optimal)",
+          "total_cost": 22226000.0,
+          "failures": 0,
+          "wasted_cycles": 1113.0
+        },
+        {
+          "policy": "Perfect foresight (oracle)",
+          "total_cost": 20200000.0,
+          "failures": 0,
+          "wasted_cycles": 100.0
+        }
+      ],
+      "top_features": {
+        "s4_mean10": 0.1541,
+        "s11_delta": 0.1252,
+        "s4_mean5": 0.1135,
+        "s11_mean10": 0.1122,
+        "cycle": 0.07,
+        "s15_mean10": 0.0539,
+        "s11_slope50": 0.0479,
+        "s2_mean10": 0.0434,
+        "s12_slope50": 0.0231,
+        "s4_slope50": 0.018,
+        "s7_slope50": 0.0173,
+        "s15_slope50": 0.014,
+        "s21_slope50": 0.0122,
+        "s12_delta": 0.0111,
+        "s14_slope50": 0.0108
+      }
+    },
+    "FD003": {
+      "subset": "FD003",
+      "train_engines": 100,
+      "test_engines": 100,
+      "n_features": 155,
+      "ablation": [
+        {
+          "model": "Ridge regression (raw sensors)",
+          "cv_rmse": 19.439787630429187,
+          "test_rmse": 21.73041601531262,
+          "test_mae": 16.902051936224076,
+          "test_nasa_score": 2242.7952316489313
+        },
+        {
+          "model": "LightGBM (raw sensors)",
+          "cv_rmse": 15.409308935898403,
+          "test_rmse": 19.77251413948422,
+          "test_mae": 13.842388906103412,
+          "test_nasa_score": 2905.7480776515467
+        },
+        {
+          "model": "LightGBM + temporal features (PrognosAI)",
+          "cv_rmse": 8.386607951051637,
+          "test_rmse": 10.309522455034342,
+          "test_mae": 6.858048607913616,
+          "test_nasa_score": 207.76148901877178
+        }
+      ],
+      "final": {
+        "test_rmse": 10.309522455034342,
+        "test_mae": 6.858048607913616,
+        "test_nasa_score": 207.76148901877178,
+        "interval_80_coverage": 0.73,
+        "within_15_cycles": 0.85,
+        "rmse_true_rul_le_50": 2.5103498477797013,
+        "interval_80_coverage_all_rows": 0.8210412147505423,
+        "test_rows": 16596
+      },
+      "literature_rmse": {
+        "CNN (Babu et al., 2016)": 19.82,
+        "LSTM (Zheng et al., 2017)": 16.18,
+        "DCNN (Li et al., 2018)": 12.64
+      },
+      "fixed_interval_age": 145.0,
+      "conformal_bins": {
+        "edges": [
+          0,
+          15,
+          30,
+          50,
+          75,
+          100,
+          126
+        ],
+        "lo": [
+          -2.49,
+          -4.12,
+          -7.49,
+          -10.61,
+          -17.16,
+          -4.44
+        ],
+        "hi": [
+          3.0,
+          3.74,
+          5.27,
+          10.65,
+          25.66,
+          7.33
+        ]
+      },
+      "rolling_backtest": [
+        {
+          "policy": "Reactive (run-to-failure)",
+          "total_cost": 150000000.0,
+          "failures": 100,
+          "wasted_cycles": 0.0
+        },
+        {
+          "policy": "Fixed-interval preventive",
+          "total_cost": 41740000.0,
+          "failures": 1,
+          "wasted_cycles": 10220.0
+        },
+        {
+          "policy": "PrognosAI (risk-optimal)",
+          "total_cost": 23234000.0,
+          "failures": 1,
+          "wasted_cycles": 967.0
+        },
+        {
+          "policy": "Perfect foresight (oracle)",
+          "total_cost": 20200000.0,
+          "failures": 0,
+          "wasted_cycles": 100.0
+        }
+      ],
+      "top_features": {
+        "s11_delta": 0.3855,
+        "s11_mean5": 0.0862,
+        "s3_mean10": 0.0859,
+        "s17_mean10": 0.0488,
+        "cycle": 0.043,
+        "s4_delta": 0.0387,
+        "s11_slope50": 0.0381,
+        "s11_mean10": 0.0368,
+        "s4_slope50": 0.0218,
+        "s12_slope50": 0.0203,
+        "s9_slope50": 0.0192,
+        "s9_delta": 0.0143,
+        "s14_slope50": 0.013,
+        "s7_slope50": 0.0118,
+        "s3_mean20": 0.0108
+      }
+    }
+  }
+}

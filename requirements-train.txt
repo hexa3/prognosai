@@ -1,0 +1,6 @@
+-r requirements.txt
+scikit-learn==1.9.1
+shap==0.54.1
+matplotlib==3.11.2
+pytest
+playwright
